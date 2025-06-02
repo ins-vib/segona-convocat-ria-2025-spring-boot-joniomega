@@ -2,90 +2,119 @@ package com.hotel.hotel.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+@Entity
 public class Partit {
-    private static long idCounter = 0;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
+   
+    @ManyToOne
+    @JoinColumn(name = "equip_local_id")
     private Equip equipLocal;
+    
+    
+    @ManyToOne
+    @JoinColumn(name = "equip_visitant_id")
     private Equip equipVisitant;
+    
+   
     private LocalDateTime data;
-    private int golsLocal;
-    private int golsVisitant;
-    private int resultatLocal;
-    private int resultatVisitant;
+    
+    private Integer golsLocal;
+    private Integer golsVisitant;
+    private Integer resultatLocal;
+    private Integer resultatVisitant;
 /*Victoria = 3 punts, Empat = 1 punt, Derrota = 0 apunts*/
     
    
     
 
-    public Partit() {
-        this.id = idCounter++;
-    }
-    public static long getIdCounter() {
-        return idCounter;
-    }
-    public static void setIdCounter(long idCounter) {
-        Partit.idCounter = idCounter;
-    }
+    public Partit() {}
 
-    public Partit(LocalDateTime data, Equip equipLocal, Equip equipVisitant, int golsLocal, int golsVisitant, long id, int resultatLocal, int resultatVisitant) {
+    public Partit(LocalDateTime data, Equip equipLocal, Equip equipVisitant) {
+        if (equipLocal.getId() == equipVisitant.getId()) {
+            throw new IllegalArgumentException("Els equips han de ser diferents");
+        }
         this.data = data;
         this.equipLocal = equipLocal;
         this.equipVisitant = equipVisitant;
-        this.golsLocal = golsLocal;
-        this.golsVisitant = golsVisitant;
-        this.id = id;
-        this.resultatLocal = resultatLocal;
-        this.resultatVisitant = resultatVisitant;
     }
 
-    
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
     }
+
     public Equip getEquipLocal() {
         return equipLocal;
     }
+
     public void setEquipLocal(Equip equipLocal) {
+        if (equipVisitant != null && equipLocal.getId() == equipVisitant.getId()) {
+            throw new IllegalArgumentException("Els equips han de ser diferents");
+        }
         this.equipLocal = equipLocal;
     }
+
     public Equip getEquipVisitant() {
         return equipVisitant;
     }
+
     public void setEquipVisitant(Equip equipVisitant) {
+        if (equipLocal != null && equipVisitant.getId() == equipLocal.getId()) {
+            throw new IllegalArgumentException("Els equips han de ser diferents");
+        }
         this.equipVisitant = equipVisitant;
     }
+
     public LocalDateTime getData() {
         return data;
     }
+
     public void setData(LocalDateTime data) {
         this.data = data;
     }
-    public int getGolsLocal() {
+
+    public Integer getGolsLocal() {
         return golsLocal;
     }
-    public void setGolsLocal(int golsLocal) {
+
+    public void setGolsLocal(Integer golsLocal) {
         this.golsLocal = golsLocal;
     }
-    public int getGolsVisitant() {
+
+    public Integer getGolsVisitant() {
         return golsVisitant;
     }
-    public void setGolsVisitant(int golsVisitant) {
+
+    public void setGolsVisitant(Integer golsVisitant) {
         this.golsVisitant = golsVisitant;
     }
-    public int getResultatLocal() {
+
+    public Integer getResultatLocal() {
         return resultatLocal;
     }
-    public void setResultatLocal(int resultatLocal) {
+
+    public void setResultatLocal(Integer resultatLocal) {
         this.resultatLocal = resultatLocal;
     }
-    public int getResultatVisitant() {
+
+    public Integer getResultatVisitant() {
         return resultatVisitant;
     }
-    public void setResultatVisitant(int resultatVisitant) {
+
+    public void setResultatVisitant(Integer resultatVisitant) {
         this.resultatVisitant = resultatVisitant;
     }
-
 }
