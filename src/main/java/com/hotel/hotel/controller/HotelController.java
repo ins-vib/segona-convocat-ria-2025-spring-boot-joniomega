@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,17 +17,22 @@ import com.hotel.hotel.model.Partit;
 
 @Controller
 public class HotelController {
-    @Autowired
+    
+    
+    private String[] posicions = {"davanter", "migcampista", "defensa", "porter"};
     private List<Equip> equips = new ArrayList<>();
     private List<Partit> partits = new ArrayList<>();
     private List<Jugador> jugadors = new ArrayList<>();
 
+    
+    
 
     @GetMapping("/")
     public String principal(Model model) {
         model.addAttribute("equips", equips);
         model.addAttribute("partits", partits);
         model.addAttribute("jugadors", jugadors);
+        
         return "principal";
     }
 
