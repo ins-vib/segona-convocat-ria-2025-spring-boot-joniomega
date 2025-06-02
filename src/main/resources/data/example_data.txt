@@ -1,0 +1,29 @@
+# Equips
+Equip:1:FC Barcelona
+Equip:2:Real Madrid
+Equip:3:Atlético Madrid
+Equip:4:Valencia CF
+
+# Jugadors FC Barcelona
+Jugador:1:Lewandowski:Delanter:1
+Jugador:2:Pedri:Centrecampista:1
+Jugador:3:Araújo:Defensa:1
+
+# Jugadors Real Madrid
+Jugador:4:Benzema:Delanter:2
+Jugador:5:Modric:Centrecampista:2
+Jugador:6:Alaba:Defensa:2
+
+# Jugadors Atlético Madrid
+Jugador:7:Griezmann:Delanter:3
+Jugador:8:Koke:Centrecampista:3
+Jugador:9:Giménez:Defensa:3
+
+# Jugadors Valencia CF
+Jugador:10:Cavani:Delanter:4
+Jugador:11:Musah:Centrecampista:4
+Jugador:12:Diakhaby:Defensa:4
+
+# Partits
+Partit:1:2024-03-15T20:00:1:2:2:1:3:0
+Partit:2:2024-03-16T18:00:3:4:1:1:1:1 
