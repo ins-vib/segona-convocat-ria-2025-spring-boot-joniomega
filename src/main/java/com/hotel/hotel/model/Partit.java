@@ -15,34 +15,23 @@ public class Partit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     
-   
     @ManyToOne
     @JoinColumn(name = "equip_local_id")
     private Equip equipLocal;
-    
     
     @ManyToOne
     @JoinColumn(name = "equip_visitant_id")
     private Equip equipVisitant;
     
-   
     private LocalDateTime data;
-    
     private Integer golsLocal;
     private Integer golsVisitant;
     private Integer resultatLocal;
     private Integer resultatVisitant;
-/*Victoria = 3 punts, Empat = 1 punt, Derrota = 0 apunts*/
-    
-   
-    
 
     public Partit() {}
 
     public Partit(LocalDateTime data, Equip equipLocal, Equip equipVisitant) {
-        if (equipLocal.getId() == equipVisitant.getId()) {
-            throw new IllegalArgumentException("Els equips han de ser diferents");
-        }
         this.data = data;
         this.equipLocal = equipLocal;
         this.equipVisitant = equipVisitant;
@@ -61,9 +50,6 @@ public class Partit {
     }
 
     public void setEquipLocal(Equip equipLocal) {
-        if (equipVisitant != null && equipLocal.getId() == equipVisitant.getId()) {
-            throw new IllegalArgumentException("Els equips han de ser diferents");
-        }
         this.equipLocal = equipLocal;
     }
 
@@ -72,9 +58,6 @@ public class Partit {
     }
 
     public void setEquipVisitant(Equip equipVisitant) {
-        if (equipLocal != null && equipVisitant.getId() == equipLocal.getId()) {
-            throw new IllegalArgumentException("Els equips han de ser diferents");
-        }
         this.equipVisitant = equipVisitant;
     }
 

@@ -8,7 +8,6 @@
     <div class="container mt-4">
         <h1>Gestor de Partits</h1>
 
-        <!-- Formulari per crear equip -->
         <div class="card mb-4">
             <div class="card-header">
                 <h3>Nou Equip</h3>
@@ -24,7 +23,6 @@
             </div>
         </div>
 
-        <!-- Formulari per crear jugador -->
         <div class="card mb-4">
             <div class="card-header">
                 <h3>Nou Jugador</h3>
@@ -37,13 +35,18 @@
                     </div>
                     <div class="mb-3">
                         <label for="posicio" class="form-label">Posició</label>
-                        <input type="text" class="form-control" id="posicio" name="posicio" required>
-                        
+                        <select class="form-control" id="posicio" name="posicio" required>
+                            <option th:each="posicio : ${posicions}" 
+                                    th:value="${posicio}" 
+                                    th:text="${posicio}"></option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="equipId" class="form-label">Equip</label>
                         <select class="form-control" id="equipId" name="equipId" required>
-                            <option th:each="equip : ${equips}" th:value="${equip.id}" th:text="${equip.nom}"></option>
+                            <option th:each="equip : ${equips}" 
+                                    th:value="${equip.id}" 
+                                    th:text="${equip.nom}"></option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Afegir Jugador</button>
@@ -51,7 +54,6 @@
             </div>
         </div>
 
-        <!-- Formulari per crear partit -->
         <div class="card mb-4">
             <div class="card-header">
                 <h3>Nou Partit</h3>
@@ -61,13 +63,17 @@
                     <div class="mb-3">
                         <label for="equipLocal" class="form-label">Equip Local</label>
                         <select class="form-control" id="equipLocal" name="equipLocalId" required>
-                            <option th:each="equip : ${equips}" th:value="${equip.id}" th:text="${equip.nom}"></option>
+                            <option th:each="equip : ${equips}" 
+                                    th:value="${equip.id}" 
+                                    th:text="${equip.nom}"></option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="equipVisitant" class="form-label">Equip Visitant</label>
                         <select class="form-control" id="equipVisitant" name="equipVisitantId" required>
-                            <option th:each="equip : ${equips}" th:value="${equip.id}" th:text="${equip.nom}"></option>
+                            <option th:each="equip : ${equips}" 
+                                    th:value="${equip.id}" 
+                                    th:text="${equip.nom}"></option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -79,7 +85,6 @@
             </div>
         </div>
 
-        <!-- Llista de partits -->
         <div class="card mb-4">
             <div class="card-header">
                 <h3>Partits</h3>
